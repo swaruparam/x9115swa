@@ -13,6 +13,6 @@ def grid (row,col):
                 print " ",
         print
         
-grid(3,3)
+grid(4,4)
     
       
