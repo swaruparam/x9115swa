@@ -43,3 +43,11 @@ Grid with three rows and three columns:
 Grid with four rows and four columns:
 
 ![ex3-5-2](ex3-5-2.png)
+
+####**Exercise 4.2**
+
+![ex4-2](ex4-2.png)
+
+####**Exercise 4.3**
+
+![ex4-3](ex4-3.png)
