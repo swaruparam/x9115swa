@@ -46,8 +46,8 @@ Grid with four rows and four columns:
 
 ####**Exercise 4.2**
 
-![ex4-2](ex4-2.png)
+![ex4-2](think4/_2.png)
 
 ####**Exercise 4.3**
 
-![ex4-3](ex4-3.png)
+![ex4-3](think4/_3.png)
