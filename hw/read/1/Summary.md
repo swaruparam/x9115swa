@@ -21,30 +21,3 @@ The answers posted on the thread in a web forum can be classified as positive, n
 
 **ii4. Feature Vector**
 Before processing large amounts of text data, they are usually converted into feature vectors, which are simplified words obtained from the original text. These processed words hold the main content and can be used for classification purposes. Examples of processes, which aid in producing feature vectors, are stop word removal (which removes non-descriptive words such as prepositions and pronouns) and stemming (extracting affixes).
-
-
-pip help:
-
-![pip_help](pip_help.png)
-
-
-easy_install -h:
-
-![easy_install_1](easy_install_1.png)
-
-![easy_install_2](easy_install_2.png)
-
-
-####**Screen shot of what it looks like to write code in my preferred Python IDE:**
-
-![sample_ide](sample_ide.png)
-
-####**Screenshot of output of okok.py test:**
-
-With 4 total test cases out of which 1 fails:
-
-![output_1](output_1.png)
-
-With 6 total test cases out of which 2 fails:
-
-![output_2](output_2.png)
