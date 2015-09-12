@@ -51,7 +51,7 @@ The proposed framework claims to increase mean average precision from 17% to 71%
 </ul>
 
 
-**iv. Suggested Improvements**
+####**iv. Suggested Improvements**
 
 <ul>
 <li> In addition to retrieving valuable solutions for the user's query, the model can be extended to detect the questions which are yet to be answered, or sub-queries within a thread which are yet to be resolved, and sent to the experts to be answered. </li>
