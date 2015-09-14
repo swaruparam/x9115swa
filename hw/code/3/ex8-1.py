@@ -6,6 +6,10 @@ def has_duplicates(check_list):
         else:
             return True
     return False
-    
-print has_duplicates(['a','a','c'])
-    
+
+inp = ['a','a','c'] 
+print inp
+print has_duplicates(inp)
+inp = ['a','b','c']
+print inp
+print has_duplicates(inp)

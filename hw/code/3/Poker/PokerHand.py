@@ -27,7 +27,7 @@ class PokerHand(Hand):
         for card in self.cards:
             ranks.append(card.rank)
         for i in ranks:
-            if ranks.count(i) == 2:
+            if ranks.count(i) == number:
                 c+=1
         if c == number:
             return True
@@ -171,16 +171,21 @@ if __name__ == '__main__':
                 no_twopair+=1
             elif label == 'One Pair':
                 no_pair+=1
-            else:
+            elif label == 'No Pair':
                 no_nothing+=1
+           # print label
         
     total = n*num_hands
+    
     print "\nResults obtained with %d hands each with %d cards, repeated over %d iterations\n" % (num_hands,num_cards,n)
     print "Probability of getting one pair : ", float(no_pair)/total
     print "Probability of getting two pair : ", float(no_twopair)/total
-    print "Probability of getting three of a kind : ", float(no_threeofakind)/total   
-        
-
-    # deal the cards and classify the hands
+    print "Probability of getting three of a kind : ", float(no_threeofakind)/total
+    print "Probability of getting straight : ", float(no_straight)/total
+    print "Probability of getting flush : ", float(no_flush)/total
+    print "Probability of getting fullhouse : ", float(no_fullhouse)/total
+    print "Probability of getting four of a kind : ", float(no_fourofakind)/total
+    print "Probability of getting straight flush : ", float(no_straightflush)/total
+    print "Probability of getting nothing of the above : ", float(no_nothing)/total
     
         
