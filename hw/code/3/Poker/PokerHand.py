@@ -8,7 +8,7 @@ License: GNU GPLv3 http://www.gnu.org/licenses/gpl.html
 """
 import operator
 from Card import *
-
+from prettytable import PrettyTable
 
 class PokerHand(Hand):
 
@@ -178,14 +178,19 @@ if __name__ == '__main__':
     total = n*num_hands
     
     print "\nResults obtained with %d hands each with %d cards, repeated over %d iterations\n" % (num_hands,num_cards,n)
-    print "Probability of getting one pair : ", float(no_pair)/total
-    print "Probability of getting two pair : ", float(no_twopair)/total
-    print "Probability of getting three of a kind : ", float(no_threeofakind)/total
-    print "Probability of getting straight : ", float(no_straight)/total
-    print "Probability of getting flush : ", float(no_flush)/total
-    print "Probability of getting fullhouse : ", float(no_fullhouse)/total
-    print "Probability of getting four of a kind : ", float(no_fourofakind)/total
-    print "Probability of getting straight flush : ", float(no_straightflush)/total
-    print "Probability of getting nothing of the above : ", float(no_nothing)/total
     
-        
+    t = PrettyTable(["Label","Probability"])
+    t.align["Label"] = 'l'
+    t.padding_width = 1
+    t.add_row(["One pair", float(no_pair)/total])
+    t.add_row(["Two pair", float(no_twopair)/total])
+    t.add_row(["Three of a kind", float(no_threeofakind)/total])
+    t.add_row(["Straight", float(no_straight)/total])
+    t.add_row(["Flush", float(no_flush)/total])
+    t.add_row(["Fullhouse", float(no_fullhouse)/total])
+    t.add_row(["Four of a kind", float(no_fourofakind)/total])
+    t.add_row(["Straight flush", float(no_straightflush)/total])
+    t.add_row(["Nothing of the above", float(no_nothing)/total])
+    
+    print t
+    
