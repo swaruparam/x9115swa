@@ -25,27 +25,26 @@ Testing tools can be snippets of programs or other test cases which are employed
 ####**iii. Brief Notes**
 
 **iii1. Motivational Statements**
-Software forums are rich in content and knowledge, which are also easily accessible. However, the problem with these portals is that the thread of posts increases to a very large number, accumulating junk along with useful information. When a user logs onto the portal to lookup a particular issue or question, he may have to go through a large thread, in order to obtain the solution. There may be cases where the positive feedback may not show up amidst the high volume of posts. It is important that data retrieval is as efficient as the database, so that the software forums could be used to its utmost capabilities.
+At the rate of the creation of Android apps today, there are increasing number of applications amidst these which have undocumented bugs and errors which aren't always picked up by the traditional compilers and IDE. Since these apps follow a structured approach, many underlying errors are commonly looked past during the deployment. Additionally, though the programming language is predominantly Java, it is seen that many apps are developed without exercising the right usage of 'Activity' component lifecycle, an additional plugin of Android not supported by Java. In the cases of multithreading operations, multiple execution and rigorous testing can only raise the code faults. To cater to these needs, the authors of the paper propagate an automated testing tool, AndroidRipper, which does a through structured check on the developed app using the GUI, pointing out faults which aren't previously documented or detected.
 
 **iii2. Hypotheses**
-The authors have come with a model that would serve as an efficient search engine within these forums, in order to capture the required data from the abundant text present. Based on some learning and extraction of feature vectors, the model would be able to filter the desired posts in a thread according to the user's needs. This would produce an accurate response when the user inputs his issue that needs to be resolved. In addition to indexing and classifying the text data, this new model also tags and filters it. Thus, the model does not require the initial information to be input as tagged as it would take care of it by itself. Also, the filterer extracts only the necessary posts that the user may have to go through to obtain the required solution.
+AndroidRipper would prevent applications from being developed with faulty errors in the underlying code and make the framework stable even in cases of odd edge cases. The program flow structure is observed en-to-end using this model by observing the application’s GUI and exploits all possible situations that may arise. Using this would prompt even the previously undetected or undocumented errors and thus, improve the efficiency of the application as a whole. The authors of the paper believed that this would also reduce the time spent on debugging and would prove as a much better alternative to Monkey, the existing standard debugging tool for Android applications. 
 
 **iii3. New Results**
 
-The new model's framework defers from the previous models in the aspect of the additional Tagger and Filterer. The structure and flow of the operations conducted on the text is shown in the diagram below.
+The proposed model, AndroidRipper, is designed to dynamically analyze the application's GUI, looking out for sequences of events fire able through the GUI widgets. It maintains a state machine model or tree to save the state transitions and events occurred during each stage. Concepts such as events, tasks, actions, and exploration criteria are clearly defined during each execution stage on the GUI tree model. Based on this, the structured program flow of the framework is observed, debugging for errors at all stages in parallel. The results of this model are compared against the Monkey debugging tool and it is observed that AndroidRipper picks up undocumented faults at a fast rate, all performed by the automated tool. Monkey masked the occurrences of certain masks and did not throw an exception in such cases. AndroidRipper also revealed a much higher percentage of covered LOCs when compared to Monkey.
 
-![search_engine](search_engine.png)
-
-The proposed framework claims to increase mean average precision from 17% to 71% in retrieving relevant answers to various queries. Based on effective classification of positive feedback, negative feedback and junk, the desired posts are extracted and are filtered to achieve this high precision ratio.
+The results observed are tabulated as shown, where R1, R2 and R3 are three phases of AndroidRipper and RM is a single execution of Monkey:
+![new_results](new_results.png)
 
 **iii4. Related Work**
 
 <ul>
-<li> S. Thummalapenta and T. Xie. Spotweb: Detecting framework hotspots and coldspots via mining open source code on the web. In ASE, pages 327–336, 2008. - is similar in the sense that information is extracted from the web but uses code from Google code instead of textual data. </li>
+<li> Cuixiong Hu and Iulian Neamtiu. 2011. Automating GUI testing for Android applications. In Proceedings of the 6th International Workshop on Automation of Software Test (AST '11). ACM, New York, NY, USA, 77-83. - Reports specific Android bugs, classified according to Event, Activity, API, etc. </li> 
 
-<li> X. Wang, L. Zhang, T. Xie, J. Anvik, and J. Sun. An approach to detecting duplicate bug reports using natural language and execution information. In ICSE, pages 461–470, 2008. - analyzes textual information and executes trace in bug reports to detect duplicate bug reports. </li>
+<li> Android Developers, The Developer’s Guide. UI/Application Exerciser Monkey,http://developer.android.com/guide/developing/tools/monkey.html last accessed on February 29th, 2012. - Generates random or deterministic sequences of events automatically and supports the interaction with the mobile device. </li> 
 
-<li> H. Zhong, L. Zhang, T. Xie, and H. Mei. Inferring resource specifications from natural language API documentation. In ASE, pages 307–318,2009. - infers tags from software documentation instead of from software forums as in this paper.
+<li> Tommi Takala, Mika Katara, and Julian Harty. 2011. Experiences of System-Level Model-Based GUI Testing of an Android Application. In Proceedings of the 2011 Fourth IEEE International Conference on Software Testing, Verification and Validation (ICST '11). IEEE Computer Society, Washington, DC, USA, 377-386. - Proposes a model-based approach for Android GUI testing.  </li>
 
 </ul>
 
@@ -53,11 +52,8 @@ The proposed framework claims to increase mean average precision from 17% to 71%
 ####**iv. Suggested Improvements**
 
 <ul>
-<li> In addition to retrieving valuable solutions for the user's query, the model can be extended to detect the questions which are yet to be answered, or sub-queries within a thread which are yet to be resolved, and sent to the experts to be answered. </li>
+<li> The detection of faults can be made much faster by speeding up the generation of GUI model tree for the application. </li>
 
-<li> Posts may consists of spelling and grammatical errors. Certain important keywords may also be lost due to such errors. This can be looked into to eradicate false results occurring due to these words.</li>
+<li> The existing model caters to the bugs and fixes which are originated by actions, tasks, events or exploration criteria. This can be expanded to include consideration of code exceptions during parallel operations, non-structured program flow and account for activity-based interactive applications. </li>
 
-<li> The current macro (post) model can be extended to the micro (sentence) level. An automated approach can be designed that could arrange or cluster the forum posts in a hierarchical fashion to help users in finding the right answer to the question. </li>
 </ul>
-
-
