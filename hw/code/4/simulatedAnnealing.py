@@ -32,10 +32,6 @@ class simAnneal():
         en = self.schaffer1(x) + self.schaffer2(x)
         return (en-self.energyMin) / (self.energyMax-self.energyMin)
     
-    #to denormalize the energy    
-    def denormalize(self,x):
-        return (self.energyMax-self.energyMin)*x + self.energyMin
-    
     #probability function    
     def prob(self, currEnergy, neighborEnergy, t):
         p = (currEnergy-neighborEnergy)/t
@@ -86,7 +82,7 @@ class simAnneal():
         print "Baseline = 1000", 
         print "Cooling = 5"
         print "Best state = ", sb
-        print "Best energy = %02f" % self.denormalize(eb)
+        print "Best energy = %02f" % eb
                 
 start = timeit.default_timer()
 
