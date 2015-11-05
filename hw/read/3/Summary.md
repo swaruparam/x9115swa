@@ -3,51 +3,52 @@
 
 ####**i. Reference**
 
-**Domenico Amalfitano, Anna Rita Fasolino, Porfirio Tramontana, Salvatore De Carmine and Atif M. Memon. ASE 2012. Using GUI Ripping for Automated Testing of Android Applications**
+**Corina S. Pasareanu and Neha Rungta. ASE 2010. Symbolic PathFinder: Symbolic Execution of Java Bytecode**
 
-**Link to the paper: ** [Paper] ( https://github.com/swaruparam/x9115swa/blob/master/hw/read/3/Using%20GUI%20Ripping%20for%20Automated%20Testing%20of%20Android%20Applications.pdf )
+**Link to the paper: ** [Paper] ( https://github.com/swaruparam/x9115swa/blob/master/hw/read/4/Symbolic%20PathFinder%20Symbolic%20Execution%20of%20Java%20Bytecode.pdf )
 
 
 ####**ii. Keywords**
 
-**ii1. Android** 
-Android is the Operating Systems used in many mobile devices and is used to deploy apps in a easy and exhaustive manner. It follows the base programming language of Java but has extended libraries and capabilities to support the requirements of mobile device applications.
+**ii1. Symbolic execution** 
+Symbolic execution refers to the phenomenon by which program codes are interpreted using symbolic measures, instead of concrete measures, to obtain desired outputs. The input variables and expressions are solved using the symbolic representation of values and the computations are performed.
 
-**ii2. GUI**
-GUI or Graphic User Interface refers to how an application is seen by the end users. It represents the mechanism by which one would be able to access through the menus and options of the application in order to set up a desired task. It is usually designed in an easily comprehensible manner so as to enable ease of operation and flexibiliy of approach.
+**ii2. Symbolic PathFinder (SPF)**
+SPF is an automated tool for performing the symbolic execution of Java byte code. It works on various input data types and carries out operations between these variables with polymorphic class hierarchy. SPF handles programs with parallelism enabled, as well as a combination of concrete and symbolic execution platforms.
 
-**ii3. Automation**
-Automation is the phenomenon of inducing scripts to the framework in order to observe complete operation of tasks without the support of external inputs. It is highly favourable in multiple situations as it tends to get work done much faster and throughly, even when users carelessly skip to deploy a specific set of tasks. 
+**ii3. Automated Test Case Generation**
+Programs require efficient and extensive testing in order to ensure the stability and durability of designed code. Using SPF, one can generate automated test cases, which would account for all the possible scenarios that may arise during program execution. This is done through structural analysis of program flow and symbolic executions.
 
-**ii4. Testing tools**
-Testing tools can be snippets of programs or other test cases which are employed within a framework to test the complete functionalty of it. There may be multiple edge cases which may not be catered to by a model, since the most frequently case would be coded up as the base case. To test the working of the model under these adverse scenarios, testing tools are employed.
+**ii4. Program Analysis**
+Programs can be analyzed in multiple ways, before being developed into an error-free and fault-free code. This analysis involves multiple and repeated steps of development and testing.  
 
 ####**iii. Brief Notes**
 
 **iii1. Motivational Statements**
 
-At the rate of the creation of Android apps today, there are increasing number of applications amidst these which have undocumented bugs and errors which aren't always picked up by the traditional compilers and IDE. Since these apps follow a structured approach, many underlying errors are commonly looked past during the deployment. Additionally, though the programming language is predominantly Java, it is seen that many apps are developed without exercising the right usage of 'Activity' component lifecycle, an additional plugin of Android not supported by Java. In the cases of multithreading operations, multiple execution and rigorous testing can only raise the code faults. To cater to these needs, the authors of the paper propagate an automated testing tool, AndroidRipper, which does a through structured check on the developed app using the GUI, pointing out faults which aren't previously documented or detected.
+Certain Java programs may have unspecified inputs, thereby creating an absence of concrete values that can be used for testing purposes. Instead, the Java byte code can be operated on using symbolic executions, replacing the expressions with equivalent symbolic code and deducing the required outputs and results. This would then yield to the possibility of generating automatic test cases for the program, without mentioning any standard inputs. SPF is a tool, which is capable of performing this interpretation and test case generation for the required code logic. This is successfully used in NASA, Academia and industry to detect faulty bugs in code and also ease the operation of clean code development.
 
-**iii2. Hypotheses**
+**iii2. New Results**
 
-AndroidRipper would prevent applications from being developed with faulty errors in the underlying code and make the framework stable even in cases of odd edge cases. The program flow structure is observed en-to-end using this model by observing the application’s GUI and exploits all possible situations that may arise. Using this would prompt even the previously undetected or undocumented errors and thus, improve the efficiency of the application as a whole. The authors of the paper believed that this would also reduce the time spent on debugging and would prove as a much better alternative to Monkey, the existing standard debugging tool for Android applications. 
-
-**iii3. New Results**
-
-The proposed model, AndroidRipper, is designed to dynamically analyze the application's GUI, looking out for sequences of events fire able through the GUI widgets. It maintains a state machine model or tree to save the state transitions and events occurred during each stage. Concepts such as events, tasks, actions, and exploration criteria are clearly defined during each execution stage on the GUI tree model. Based on this, the structured program flow of the framework is observed, debugging for errors at all stages in parallel. The results of this model are compared against the Monkey debugging tool and it is observed that AndroidRipper picks up undocumented faults at a fast rate, all performed by the automated tool. Monkey masked the occurrences of certain masks and did not throw an exception in such cases. AndroidRipper also revealed a much higher percentage of covered LOCs when compared to Monkey.
-
-The results observed are tabulated as shown, where R1, R2 and R3 are three phases of AndroidRipper and RM is a single execution of Monkey:
+Using SPF, the error types of Race conditions or Deadlocks are detected with the usage of minimum resources, as listed in the table below. The time taken to analyze the given program, with symbolic executions and automatic test case generations is minimal and thus, is shown to be very efficient. 
 
 ![new_results](new_results.png)
+
+Various Java class libraries are operated upon using SPF, in a systematic procedure of multiple operations. The program is tested for instructions, branching conditions, decision constraints, input data structures, etc., to analyze the different aspects of the program and deduce the final report.
+
+**iii3. Study Instruments**
+
+To depict the efficiency of the tool, it is combined with the Java PathFinder verification tool-set where the JPF-core is replaced by the SPF to employ symbolic instead of concrete executions. User specifies a depth to which the program is to be analyzed so as to make sure that the tool does not endlessly execute the symbolic code. The tool is run on multiple Java classes to test if the subtle bugs are uncovered. 
+
 
 **iii4. Related Work**
 
 <ul>
-<li> Cuixiong Hu and Iulian Neamtiu. 2011. Automating GUI testing for Android applications. In Proceedings of the 6th International Workshop on Automation of Software Test (AST '11). ACM, New York, NY, USA, 77-83. - Reports specific Android bugs, classified according to Event, Activity, API, etc. </li> 
+<li> X. Deng, J. Lee, and Robby. Bogor/Kiasan: a k-bounded symbolic execution for checking strong heap properties of open systems. In ASE, 2006. - Does not separate between concrete and symbolic data and cannot handle complex Math constraints. </li> 
 
-<li> Android Developers, The Developer’s Guide. UI/Application Exerciser Monkey, http://developer.android.com/guide/developing/tools/monkey.html last accessed on February 29th, 2012. - Generates random or deterministic sequences of events automatically and supports the interaction with the mobile device. </li> 
+<li> S. Anand, C. Pa ̆sa ̆reanu, and W. Visser. JPF–SE: A Symbolic Execution Extension to Java PathFinder. TACAS, pages 134–138, 2007. - Requires a program instrumentation or a type-based analysis, and hence is less efficient. </li> 
 
-<li> Tommi Takala, Mika Katara, and Julian Harty. 2011. Experiences of System-Level Model-Based GUI Testing of an Android Application. In Proceedings of the 2011 Fourth IEEE International Conference on Software Testing, Verification and Validation (ICST '11). IEEE Computer Society, Washington, DC, USA, 377-386. - Proposes a model-based approach for Android GUI testing.  </li>
+<li> K. Sen, D. Marinov, and G. Agha. CUTE: a concolic unit testing engine for C. In Proc. ESEC/FSE-13, pages 263–272, New York, NY, USA, 2005. ACM. - Work by program instrumentation and does not cope with multithreading.  </li>
 
 </ul>
 
@@ -55,8 +56,8 @@ The results observed are tabulated as shown, where R1, R2 and R3 are three phase
 ####**iv. Suggested Improvements**
 
 <ul>
-<li> The detection of faults can be made much faster by speeding up the generation of GUI model tree for the application. </li>
+<li> Though SPF tool analyzes the code optimally, it is not scalable in the sense that it does not operate on extended number of constraints. This could be worked upon to cater to the needs of large complicated programs as well. </li>
 
-<li> The existing model caters to the bugs and fixes which are originated by actions, tasks, events or exploration criteria. This can be expanded to include consideration of code exceptions during parallel operations, non-structured program flow and account for activity-based interactive applications. </li>
+<li> SPF could be made to run in parallel, to increase the speed of operation to a much larger extent. The overall code can be segmented into multiple blocks of code and be processed simultaneously. </li>
 
 </ul>
