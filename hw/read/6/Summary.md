@@ -1,11 +1,11 @@
-##**Reading Assignment 5: Summary**
+##**Reading Assignment 6: Summary**
 
 
 ####**i. Reference**
 
-**Domenico Amalfitano, Anna Rita Fasolino, Porfirio Tramontana, Salvatore De Carmine and Atif M. Memon. ASE 2012. Using GUI Ripping for Automated Testing of Android Applications**
+**Fitsum Meshesha Kifetew, Wei Jin, Roberto Tiella, Alessandro Orso, Paolo Tonella. ASE 2013. SBFR: A Search Based Approach for Reproducing Failures of Programs with Grammar Based Input**
 
-**Link to the paper: ** [Paper] ( https://github.com/swaruparam/x9115swa/blob/master/hw/read/5/Using%20GUI%20Ripping%20for%20Automated%20Testing%20of%20Android%20Applications.pdf )
+**Link to the paper: ** [Paper] ( https://github.com/swaruparam/x9115swa/blob/master/hw/read/6/SBFR.pdf )
 
 
 ####**ii. Keywords**
