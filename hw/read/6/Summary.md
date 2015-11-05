@@ -10,44 +10,45 @@
 
 ####**ii. Keywords**
 
-**ii1. Android** 
-Android is the Operating Systems used in many mobile devices and is used to deploy apps in a easy and exhaustive manner. It follows the base programming language of Java but has extended libraries and capabilities to support the requirements of mobile device applications.
+**ii1. Field Failures** 
+Field failures are the faults that occur on user machines due to an unexcepted edge case error after the deployment of the software code. It is a major concern for the modern software systems to duplicate the errors in-house and fixing it before the next release.
 
-**ii2. GUI**
-GUI or Graphic User Interface refers to how an application is seen by the end users. It represents the mechanism by which one would be able to access through the menus and options of the application in order to set up a desired task. It is usually designed in an easily comprehensible manner so as to enable ease of operation and flexibiliy of approach.
+**ii2. Evolutionary Search**
+This is an optimization heuristic where a population of candidate solutions is gathered and the future generations of similar candidates are obtained by reproduction of the previous generation candidates. Mechanisms by which reproduction may say to occur can be by means of mutation and crossover. Genetic Algorithm (GA) and Genetic Programming (GP) are two examples of such search algorithms. 
 
-**ii3. Automation**
-Automation is the phenomenon of inducing scripts to the framework in order to observe complete operation of tasks without the support of external inputs. It is highly favourable in multiple situations as it tends to get work done much faster and throughly, even when users carelessly skip to deploy a specific set of tasks. 
+**ii3. Grammatical Evolution**
+Grammatical Evolution is a type of Grammar Guided Genetic Programming (GGGP) where the individual candidates are sentences, which are formed by following the accepted rules of grammar. GE follows the Context Free Grammar (CFG), which is maintained at all times during mutation or crossover. Following the given steps for this particular grammar can produce the initial candidate set.
 
-**ii4. Testing tools**
-Testing tools can be snippets of programs or other test cases which are employed within a framework to test the complete functionalty of it. There may be multiple edge cases which may not be catered to by a model, since the most frequently case would be coded up as the base case. To test the working of the model under these adverse scenarios, testing tools are employed.
+**ii4. Genotype - Phenotype**
+Genotype - Phenotype is a pair used to represent an individual in GE. Genotype is the encoded form of a candidate that can be involved as such in the search algorithm, while phenotype is the executable version of the candidate which is predominantly used as an input for software under test. The mapping between these two values is used to convert the linear representation into a syntax tree.
 
 ####**iii. Brief Notes**
 
 **iii1. Motivational Statements**
 
-At the rate of the creation of Android apps today, there are increasing number of applications amidst these which have undocumented bugs and errors which aren't always picked up by the traditional compilers and IDE. Since these apps follow a structured approach, many underlying errors are commonly looked past during the deployment. Additionally, though the programming language is predominantly Java, it is seen that many apps are developed without exercising the right usage of 'Activity' component lifecycle, an additional plugin of Android not supported by Java. In the cases of multithreading operations, multiple execution and rigorous testing can only raise the code faults. To cater to these needs, the authors of the paper propagate an automated testing tool, AndroidRipper, which does a through structured check on the developed app using the GUI, pointing out faults which aren't previously documented or detected.
+More often than not, there arise field failures even after thorough testing of a software and deployment into the market. This requires in-house bug fixing which involves duplication of the same experienced failure. Since software code can be very complex and there may be numerous paths or cases to a result, it becomes difficult to navigate through the code in the same manner to produce the desired error. Additionally, the problem faced is usually given as a grammatical input to the software engineers, which does not always provide complete information. Thus, the authors of the paper have proposed a model, Search Based Failure Reproduction (SBFR), to predict the trajectory of function calls or a list of operations that can be performed in order to obtain an analogous error to the one reported. This is performed by means of having the software code, input grammatical description of the fault and sample execution data.
 
 **iii2. Hypotheses**
 
-AndroidRipper would prevent applications from being developed with faulty errors in the underlying code and make the framework stable even in cases of odd edge cases. The program flow structure is observed en-to-end using this model by observing the application’s GUI and exploits all possible situations that may arise. Using this would prompt even the previously undetected or undocumented errors and thus, improve the efficiency of the application as a whole. The authors of the paper believed that this would also reduce the time spent on debugging and would prove as a much better alternative to Monkey, the existing standard debugging tool for Android applications. 
+Since the input to the model is provided as a grammatical sentence, it needs to broken down to a tree of genotype-phenotype pairs in order to make it representable to the machine/program. This is performed by scanning through the input and picking out the words and operations, as per the selected grammar. The linear grammar representations can be encoded as a sequence of integers, called codons. Once the input has been made representable, the evolution operators of mutation and crossover are decided. Sub-tree crossover and mutation is frequently used to populate generations of suitable candidates. On passing these generated inputs to the SBFR model, it would yield results in the form of a list of operations which when carried out in order would give rise to a similar failure in the software under test. Being more efficient in computation and ease of operation, field failures should not be a huge concern using this predictive model.
 
 **iii3. New Results**
 
-The proposed model, AndroidRipper, is designed to dynamically analyze the application's GUI, looking out for sequences of events fire able through the GUI widgets. It maintains a state machine model or tree to save the state transitions and events occurred during each stage. Concepts such as events, tasks, actions, and exploration criteria are clearly defined during each execution stage on the GUI tree model. Based on this, the structured program flow of the framework is observed, debugging for errors at all stages in parallel. The results of this model are compared against the Monkey debugging tool and it is observed that AndroidRipper picks up undocumented faults at a fast rate, all performed by the automated tool. Monkey masked the occurrences of certain masks and did not throw an exception in such cases. AndroidRipper also revealed a much higher percentage of covered LOCs when compared to Monkey.
-
-The results observed are tabulated as shown, where R1, R2 and R3 are three phases of AndroidRipper and RM is a single execution of Monkey:
+Given an input program P, an execution E that results in failure F and set of execution data D, the model predicts an execution E' that results in a failure F' which is analogous to F. E' also generates the same data D to ensure that the failure occurs in the same manner. E' should also be an actual execution of P and should result in F' without any other additional information. This is illustrated in the diagram below.
 
 ![new_results](new_results.png)
+
+Software Under Test (SUT) is the program P and the result E' obtained is a trajectory that depicts the order of function calls. SBFR uses 80/20 rule, where a probability of 0.2 is distributed normally over the recursive productions and the remaining 0.8 on non-recursive productions. The best solution is found by means of fitness functions, which are applied to the candidate solution to obtain a performance metric. The solutions are then ranked based on this score to obtain the best solution as the output of the model. 
 
 **iii4. Related Work**
 
 <ul>
-<li> Cuixiong Hu and Iulian Neamtiu. 2011. Automating GUI testing for Android applications. In Proceedings of the 6th International Workshop on Automation of Software Test (AST '11). ACM, New York, NY, USA, 77-83. - Reports specific Android bugs, classified according to Event, Activity, API, etc. </li> 
+<li> W. Jin and A. Orso, “Bugredux: Reproducing field failures for in-house debugging,” in Proc. of the 34th International Conference on Software
+Engineering (ICSE), 2012, pp. 474–484. - BugRedux is a general approach for synthesizing, in-house, executions that observed field failures. </li> 
 
-<li> Android Developers, The Developer’s Guide. UI/Application Exerciser Monkey, http://developer.android.com/guide/developing/tools/monkey.html last accessed on February 29th, 2012. - Generates random or deterministic sequences of events automatically and supports the interaction with the mobile device. </li> 
+<li> J. Ro ̈ßler, A. Zeller, G. Fraser, C. Zamfir, and G. Candea, “Recon- structing Core Dumps,” in Proc. of the 6th International Conference on Software Testing, 2013, pp. 114–123. - RECORE applies genetic algorithms to synthesize executions from crash call stacks, but focuses on partial executions which does not guarantee that the approach would be able to reproduce complete executions. </li> 
 
-<li> Tommi Takala, Mika Katara, and Julian Harty. 2011. Experiences of System-Level Model-Based GUI Testing of an Android Application. In Proceedings of the 2011 Fourth IEEE International Conference on Software Testing, Verification and Validation (ICST '11). IEEE Computer Society, Washington, DC, USA, 377-386. - Proposes a model-based approach for Android GUI testing.  </li>
+<li> C. Zamfir and G. Candea, “Execution Synthesis: A Technique for Automated Software Debugging,” in Proceedings of the 5th European Conference on Computer Systems, 2010, pp. 321–334. - Specifically focus on reproducing concurrency-related failures.  </li>
 
 </ul>
 
@@ -55,8 +56,12 @@ The results observed are tabulated as shown, where R1, R2 and R3 are three phase
 ####**iv. Suggested Improvements**
 
 <ul>
-<li> The detection of faults can be made much faster by speeding up the generation of GUI model tree for the application. </li>
+<li> The model can be made more efficient by improving the fitness functions to increase the probability of failure reproduction. This would in turn reduce the amount of time taken to obtain the final output. </li>
 
-<li> The existing model caters to the bugs and fixes which are originated by actions, tasks, events or exploration criteria. This can be expanded to include consideration of code exceptions during parallel operations, non-structured program flow and account for activity-based interactive applications. </li>
+<li> The grammar used for the representation of inputs can be better learned to improvise on the initial input from which further processing is performed to yield generations of candidate solutions. </li>
+
+<li> Current SBFR model can be extended to cater to complex programs such that the failure scenario can be replicated as efficiently as for the simple code programs. Since complicated software would give rise to more execution data and cases, the model should be accurate such that the trajectory of function calls does yield an analogous failure. </li>
 
 </ul>
+
+
