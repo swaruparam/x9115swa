@@ -31,7 +31,11 @@ It is now easily possible to locate bugs within a program, but still remains a c
 
 **iii2. Study Instruments**
 
-To study and test the proposed model, two program subjects are used, namely the ASPECTJ and RHINO. These have listed crashing bugs, along with the size and number of tests within each program. PACHIKA tool is tested for accuracy by checking the number of bugs it is able to fix with respect to the total number of bugs present. Further, it is also used to test the number of validated fixes that are generated in order to correct the failing run and make it pass at all executions.
+To study and test the proposed model, two program subjects are used, namely the ASPECTJ and RHINO. These have listed crashing bugs, along with the size and number of tests within each program. 
+
+![study_instruments](study_instruments.png)
+
+PACHIKA tool is tested for accuracy by checking the number of bugs it is able to fix with respect to the total number of bugs present. Further, it is also used to test the number of validated fixes that are generated in order to correct the failing run and make it pass at all executions.
 
 The sequence of operations, which are carried out on each program, is shown in the figure below. 
 
