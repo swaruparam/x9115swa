@@ -6,7 +6,6 @@ class Model(object):
         self.no_decs = 0
         self.no_objs = 0
         self.decs = [ ]
-        #self.objs = [ ]
         self.min_range = [ ]
         self.max_range = [ ]
         
@@ -41,7 +40,6 @@ class Model(object):
         for _ in range(1000):
             self.any_can()
             energies.append(sum(self.eval_can()))
-            #f1f2sum.append(self.score(x))
         return [min(energies), max(energies)]
     
     
@@ -50,7 +48,6 @@ class Schaffer (Model):
         self.no_decs = 1
         self.no_objs = 2
         self.decs = [0]
-        #self.objs = [ ]
         self.min_range = [-100]
         self.max_range = [100]
         self.any_can()
@@ -66,21 +63,12 @@ class Schaffer (Model):
     def eval_can(self):
         return [self.f1(), self.f2()]
         
-    # def baseline_study(self):
-    #     energies = [ ]
-    #     for _ in range(1000):
-    #         self.any_can()
-    #         energies.append(sum(self.eval_can()))
-    #         #f1f2sum.append(self.score(x))
-    #     return [min(energies), max(energies)]
-        
 
 class Osyczka2 (Model):
     def __init__(self):
         self.no_decs = 6
         self.no_objs = 2
         self.decs = [0, 0, 0, 0, 0, 0]
-        #self.objs = [ ]
         self.min_range = [0, 0, 1, 0, 1, 0]
         self.max_range = [10, 10, 5, 6, 5, 10]    
         self.any_can()
@@ -111,24 +99,15 @@ class Osyczka2 (Model):
         f2 = sum(xi**2 for xi in x)
         return f2
         
-    # returns energy f1+f2 based on Osyczka2 model
     def eval_can(self):
         return [self.f1(), self.f2()]
         
-    # def baseline_study(self):
-    #     energies = [ ]
-    #     for _ in range(1000):
-    #         self.any_can()
-    #         energies.append(sum(self.eval_can()))
-    #         #f1f2sum.append(self.score(x))
-    #     return [min(energies), max(energies)]
     
 class Kursawe (Model):
     def __init__(self):
         self.no_decs = 3
         self.no_objs = 2
         self.decs = [0, 0, 0]
-        #self.objs = [ ]
         self.min_range = [-5, -5, -5]
         self.max_range = [5, 5, 5]    
         self.any_can()   
@@ -149,5 +128,3 @@ class Kursawe (Model):
     
     def eval_can(self):
         return [self.f1(), self.f2()]
-        
-

@@ -10,4 +10,5 @@ for model in [Schaffer, Osyczka2, Kursawe]:
      optimizer(model)
      print "*****************************************"
 
+#maxWalkSat(Schaffer)
 
