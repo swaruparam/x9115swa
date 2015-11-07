@@ -1,20 +1,20 @@
 import random
 import math
 
+# prob for SA
 def prob(currEnergy, neighborEnergy, t):
     p = (currEnergy-neighborEnergy)/t
     ret = math.exp(p)
     return ret
 
-def neighbor(curr,index,model):
-    next_can = model()
-    next_can.copy(curr)
-    while 1:
-        next_can.decs[index]=random.uniform(next_can.min_range[index], next_can.max_range[index])
-        if next_can.ok(): 
-            break
-    return next_can
-    
+# normalization and denormalization of energies
+def norm(curr_energy,min_energy,max_energy):
+    return (curr_energy-min_energy)/(max_energy-min_energy)
+
+def denorm(curr_energy,min_energy,max_energy):
+    return (max_energy-min_energy)*curr_energy + min_energy
+
+# random change when p is low, for MWS    
 def randomChange(can,index,model):
     k=1
     kmax = 1000
@@ -25,13 +25,8 @@ def randomChange(can,index,model):
       can.decs[index] = randomValue
       if k==kmax or can.ok(): # break when threshold limit is reached
         return can
-    
-def norm(curr_energy,min_energy,max_energy):
-    return (curr_energy-min_energy)/(max_energy-min_energy)
 
-def denorm(curr_energy,min_energy,max_energy):
-    return (max_energy-min_energy)*curr_energy + min_energy
-
+# best change when p is high, for MWS
 def bestChange(can,index,energycan,model):
     steps = 100
     next_can = model()
@@ -49,7 +44,9 @@ def bestChange(can,index,energycan,model):
       return can
     return next_can
 
+
 def simulatedAnnealing(obj):
+    # setting parameters
     kmax = 1000.0
     sb = obj()
     s = obj()

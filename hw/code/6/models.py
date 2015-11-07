@@ -1,6 +1,7 @@
 import random
 import math
 
+# generic model class
 class Model(object):
     def __init__(self):
         self.no_decs = 0
@@ -35,7 +36,7 @@ class Model(object):
     def can_energy(self):
         return sum(self.eval_can())
         
-    def baseline_study(self):
+    def baseline_study(self): #to find min and max energies
         energies = [ ]
         for _ in range(1000):
             self.any_can()
