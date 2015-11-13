@@ -37,25 +37,17 @@ The search algorithms developed are CFG - directed search, uniform random testin
 
 The implemented search algorithms, written in CREST (a prototype test generation tool for C), are compared against a sample test program Replace, GNU Grep 2.2 and Vim 5.7.
 
-<ol>
-<li> Replace. This program consists of 600 lines with multiple program flow decisions. It is run with the implemented search algorithm with 10-symbolic-character suite and destination patterns ( 5 for bounded DFS) and 20-symbolic-character line of test open for substitution. The figure below shows that limited amount of testing covered 80% of all branches within a minute and with a little more testing, 85% or even 90% is achieved.
+* Replace. This program consists of 600 lines with multiple program flow decisions. It is run with the implemented search algorithm with 10-symbolic-character suite and destination patterns ( 5 for bounded DFS) and 20-symbolic-character line of test open for substitution. The figure below shows that limited amount of testing covered 80% of all branches within a minute and with a little more testing, 85% or even 90% is achieved.
 
 ![result_1](result_1.png) 
 
-</li>
-
-<li> GNU Grep 2.2. The GNU grep holds around 15000 lines of code and is run with 20-symbolic-character suite and destination patterns (5 for bounded DFS) and 40-symbolic-character line of test open for substitution. In only a couple of minutes, the most effective strategies cover almost 60% of the estimated reachable branches. CFG - directed search and the random branch search prove to perform better by a significant margin. This is highlighted in the figure below.
+* GNU Grep 2.2. The GNU grep holds around 15000 lines of code and is run with 20-symbolic-character suite and destination patterns (5 for bounded DFS) and 40-symbolic-character line of test open for substitution. In only a couple of minutes, the most effective strategies cover almost 60% of the estimated reachable branches. CFG - directed search and the random branch search prove to perform better by a significant margin. This is highlighted in the figure below.
 
 ![result_2](result_2.png) 
 
-</li>
-
-<li> Vim 5.7. This is a 150,000-line open source text editor. Provided a 40-symbolic-character input, most modules of the program are being reached and tested except certain parts such as the Ex mode. In 2-3 hours of testing, most effective strategies cover 1/3 of the total predicted branches and it can be seen that CFG-directed search and random branch search perform better than the others, similar the case before. They are faster and obtain better coverage, as depicted in the figure below.
+* Vim 5.7. This is a 150,000-line open source text editor. Provided a 40-symbolic-character input, most modules of the program are being reached and tested except certain parts such as the Ex mode. In 2-3 hours of testing, most effective strategies cover 1/3 of the total predicted branches and it can be seen that CFG-directed search and random branch search perform better than the others, similar the case before. They are faster and obtain better coverage, as depicted in the figure below.
 
 ![result_3](result_3.png) 
-
-</li>
-</ol>
 
 
 **iii4. Related Work**
