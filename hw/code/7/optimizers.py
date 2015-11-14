@@ -1,5 +1,6 @@
 import random
 import math
+import sys
 
 # prob for SA
 def prob(currEnergy, neighborEnergy, t):
@@ -88,10 +89,10 @@ def simulatedAnnealing(obj):
             
         k = k+1 
                 
-    print "\nKmax = ", kmax
-    print "Baseline = 1000", 
-    print "Cooling = 5"
-    print "Best state = ", sb.decs
+    #print "\nKmax = ", kmax
+    #print "Baseline = 1000", 
+    #print "Cooling = 5"
+    print "Best candidate = ", sb.decs
     print "Best energy = %02f" % denorm(eb,min_energy,max_energy)
     
 
@@ -158,10 +159,10 @@ def maxWalkSat(obj):
     print_can = [ ]
     for can in best_can.decs:
      print_can.append(round(can,3))    
-    print "Best Candidate: ", print_can
+    print "Best candidate: ", print_can
     best_energycan = round(best_energycan,4)
     best_energycan = denorm(best_energycan,min_energy,max_energy)
-    print "Best Energy: ", best_energycan
+    print "Best energy: ", best_energycan
     
 def differentialEvolution(obj):
     k=0
@@ -173,55 +174,110 @@ def differentialEvolution(obj):
     
     can1 = obj()
     best_can = obj()
-    min_energy, max_energy = can1.baseline_study()
-    best_energy = 1.0
+
     best_can.copy(can1)
     
     frontier = [ ]
     out = [ ]
     
+    # for _ in range(no_cans):
+    #   can = obj()
+    #   f1,f2 = can.eval_can()
+    #   #print f1,f2
+    #   if f1 < min_f[0]:
+    #     min_f[0] = f1
+    #   if f2 < min_f[1]:
+    #     min_f[1] = f2
+    #   if f1 > max_f[0]:
+    #     max_f[0] = f1
+    #   if f2 > max_f[1]:
+    #     max_f[1] = f2
+    #   frontier.append(can)
+    # print min_f
+    # print max_f
+    
     for _ in range(no_cans):
       can = obj()
-      print can.decs
       frontier.append(can)
+      if can.can_energy() > best_can.can_energy():
+        best_can.copy(can)
     
-    for k in range(repeats):
-      
-      if k%25 == 0:
+    k = 0 
+    
+    for _ in range(repeats):
+      new_frontier = [ ]
+      for one in frontier:
+        while 1:
+          two, three, four = threeOthers(frontier, one)
+          r =random.randint(0,one.no_decs-1)
+          new_can = obj()
+          for i in range(one.no_decs):
+            changed = False
+            if random.random() < prob_crossover or i==r:
+              changed = True
+              new_can.decs[i] = two.decs[i]+extrapolate_amt*(three.decs[i]-four.decs[i])
+            else:
+              new_can.decs[i] = one.decs[i]
+          if new_can.ok():
+            break
+        if new_can.can_energy() < best_can.can_energy():
+          best_can.copy(new_can)
+          out.append("!")
+        elif new_can.can_energy() < one.can_energy():
+          out.append("+")
+        else:
+          out.append(".")
+        new_frontier.append(new_can)
+        k = k+1
+        if k%50 == 0:
           print k, 
           print "".join(out)
           out = [ ]
+        
       
-      total, n = 0.0, 0
-      for x in frontier:
-        en = de_energy(x,min_energy,max_energy)
-        new = extrapolate(obj,frontier,x,extrapolate_amt,prob_crossover)
-      if new.can_energy() > en:
-        out.append("+")
-        x.copy(new)
-      else:
-        out.append(".")
-      total += en
-      n += 1
-      
-      
-          
-      #total,n = update(obj,extrapolate_amt,prob_crossover,frontier,out)
-      out.append("!")
-      if total/n < epsilon or total/n < best_energy: 
-        best_energy = total/n
-        best_can.copy(can)
-        break
+  
     
-    #for c in frontier:
-    #  print c.decs
+    # k = 0
+    
+    # for _ in range(repeats):
+      
+    #   total, n = 0.0, 0
+    #   for x in frontier:
+    #     agg_score = de_energy(x,min_f,max_f)
+    #     new = extrapolate(obj,frontier,x,extrapolate_amt,prob_crossover)
+    #     new_agg_score = de_energy(new,min_f,max_f)
+    #     if new_agg_score < agg_score:
+    #       pos = [i for i,y in enumerate(frontier) if y == x]
+    #       frontier[pos[0]].copy(new)
+    #       agg_score = new_agg_score
+    #       best_can.copy(new)
+    #       out.append("+")
+    #       k=k+1
+    #     else:
+    #       out.append(".")
+    #       k=k+1
+    #     total += agg_score
+    #     n += 1
+    #     if k%50 == 0:
+    #       print k, 
+    #       print "".join(out)
+    #       out = [ ]
+
+    #   out.append("!")
+    #   k = k+1
+    #   if total/n < epsilon: #or total/n < best_score: 
+    #     best_score = total/n
+    
     print_can = [ ]
     for can in best_can.decs:
-      print_can.append(round(can,3))     
-    print "Best Candidate: ", print_can
-    best_energy = round(best_energy,4)
-    best_energy = denorm(best_energy,min_energy,max_energy)
-    print "Best Energy: ", best_energy
+     print_can.append(round(can,3))    
+    print "Best candidate: ", print_can
+    best_energycan = round(best_can.can_energy(),4)
+    #best_energycan = denorm(best_energycan,min_energy,max_energy)
+    print "Best energy: ", best_energycan
+    #print "Best candidate: ", best_can.decs     
+    #best_score = round(best_can.can_energy(),4)
+    #print "Best energy: ", best_score
   
   
 def extrapolate(obj,frontier,one,extrapolate_amt,prob_crossover):
@@ -247,23 +303,24 @@ def extrapolate(obj,frontier,one,extrapolate_amt,prob_crossover):
 def threeOthers(frontier, avoid):
   three_others = [ ]
   pos = [i for i,x in enumerate(frontier) if x == avoid]
-  for _ in range(3):
+  while 1:
     index = random.randint(0,len(frontier)-1)
-    if index != pos:
+    if index not in pos:
       three_others.append(frontier[index])
+    if len(three_others) == 3:
+      break
+  #print len(three_others)
   return three_others[0], three_others[1], three_others[2]
   
-def de_energy(x, min_energy,max_energy):
-  # This evaluates the objs and stores them candidate.scores
-  en = x.can_energy()
-  # Just for fun
-  norm_en = norm(x,min_energy,max_energy)
-  #normalized_scores = [normalize(x) for normalize, x in zip(normalizers, candidate.scores)]
-  # The distance of score of each objective from hell
-  hell_dist = [(1 - x) for x in normalized_scores]
+def de_energy(x, min_f, max_f):
+  f1,f2 = x.eval_can()
+  hell = 1
+  normalized_f1 = (f1-min_f[0])/(max_f[0]-min_f[0])
+  normalized_f2 = (f2-min_f[1])/(max_f[1]-min_f[1])
+  fromhell_f1 = (hell - normalized_f1)
+  fromhell_f2 = (hell - normalized_f2)
 
-  sum_of_squares = sum([x ** 2 for x in hell_dist])
+  sum_of_squares = fromhell_f1**2 + fromhell_f2**2
 
-  energy = 1 - (math.sqrt(sum_of_squares) / math.sqrt(len(hell_dist)))
-
-  return energy
+  agg_score = 1 - (math.sqrt(sum_of_squares) / math.sqrt(2))
+  return agg_score
