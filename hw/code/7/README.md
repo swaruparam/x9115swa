@@ -13,51 +13,42 @@
 * Max Walk Sat
 * Differential Evolution
 
-###**Output of /code/6/main.py:**
+###**Output of /code/7/main.py:**
 
-####**Simulated Annealing on Schaffer**
+####**Different optimizers on Golinski**
 
-![sa_schaffer_1](imgs/sa_schaffer_1.png)
+####**Simulated Annealing on Golinski**
 
-![sa_schaffer_2](imgs/sa_schaffer_2.png)
+![sa_golinski_1](imgs/sa_golinski_1.png)
 
-
-####**Max Walk Sat on Schaffer**
-
-![mws_schaffer_1](imgs/mws_schaffer_1.png)
-
-![mws_schaffer_2](imgs/mws_schaffer_2.png)
-
-![mws_schaffer_3](imgs/mws_schaffer_3.png)
+![sa_golinski_2](imgs/sa_golinski_2.png)
 
 
-####**Simulated Annealing on Osyczka2**
+####**Max Walk Sat on Golinksi**
 
-![sa_osyczka2_1](imgs/sa_osyczka2_1.png)
+![mws_golinski_1](imgs/mws_golinski_1.png)
 
-![sa_osyczka2_2](imgs/sa_osyczka2_2.png)
-
-
-####**Max Walk Sat on Osyczka2**
-
-![mws_osyczka2_1](imgs/mws_osyczka2_1.png)
-
-![mws_osyczka2_2](imgs/mws_osyczka2_2.png)
-
-![mws_osyczka2_3](imgs/mws_osyczka2_3.png)
+![mws_golinski_2](imgs/mws_golinski_2.png)
 
 
-####**Simulated Annealing on Kursawe**
+####**Differential Evolution on Golinksi**
 
-![sa_kursawe_1](imgs/sa_kursawe_1.png)
-
-![sa_kursawe_2](imgs/sa_kursawe_2.png)
+![de_golinski](imgs/de_golinski.png)
 
 
-####**Max Walk Sat on Kursawe**
 
-![mws_kursawe_1](imgs/mws_kursawe_1.png)
+####**Differential Evolution on different models**
 
-![mws_kursawe_2](imgs/mws_kursawe_2.png)
+####**Differential Evolution on Schaffer**
 
-![mws_kursawe_3](imgs/mws_kursawe_3.png)
+![de_schaffer](imgs/de_schaffer.png)
+
+
+####**Differential Evolution on Osyczka2**
+
+![de_osyczka2](imgs/de_osyczka2.png)
+
+
+####**Differential Evolution on Kursawe**
+
+![de_kursawe](imgs/de_kursawe.png)
