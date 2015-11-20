@@ -130,7 +130,7 @@ def simulatedAnnealing(obj):
     #print "Cooling = 5"
     
     loss = loss_in_eras(first_era, prev_era)
-    print "Loss numbers: " , loss
+    #print "Loss numbers: " , loss
     print_can = [ ]
     for can in sb.decs:
      print_can.append(round(can,3))    
@@ -215,7 +215,7 @@ def maxWalkSat(obj):
           out = [ ]
       
     loss = loss_in_eras(first_era, prev_era)
-    print "Loss numbers: " , loss    
+    #print "Loss numbers: " , loss    
     print_can = [ ]
     for can in best_can.decs:
      print_can.append(round(can,3))    
@@ -308,7 +308,7 @@ def differentialEvolution(obj):
           out = [ ]
     
     loss = loss_in_eras(first_era, prev_era)
-    print "Loss numbers: " , loss     
+    #print "Loss numbers: " , loss     
     print_can = [ ]
     for can in best_can.decs:
      print_can.append(round(can,3))    
