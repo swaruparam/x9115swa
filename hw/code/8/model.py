@@ -41,11 +41,11 @@ class dtlz7():
         f2 = (1+self.g(x))*self.h(self.f1(),self.g(x),2)
         return f2
         
-    def eval_can(self):
+    def objectives(self):
         return [self.f1(), self.f2()]
     
     def can_energy(self):
-        return sum(self.eval_can())
+        return sum(self.objectives())
     
     def g(self,x):
         s = sum(x)
@@ -56,8 +56,20 @@ class dtlz7():
         return M - ((f/(1+g))* (1+math.sin(angle)))
     
     def baseline_study(self): #to find min and max energies
-        energies = [ ]
+        empty = [ ]
+        energiesOfObjs = [[ ],[ ]]
         for _ in range(1000):
             self.any_can()
-            energies.append(self.can_energy())
-        return [min(energies), max(energies)]
+            for each_obj in range(self.no_objs):
+                obj_energy = self.objectives()
+                energiesOfObjs[each_obj].append(obj_energy[each_obj])
+  
+        min_list = [ ]
+        max_list = [ ]
+        for each_list in energiesOfObjs:
+            min_list.append(min(each_list))
+            max_list.append(max(each_list))
+        print "min list", min_list
+        print "max list", max_list
+        return [min_list, max_list]
+        
