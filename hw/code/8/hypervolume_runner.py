@@ -53,7 +53,7 @@ def HyperVolume(list_result_object):
 
 
 def HyperVolume_wrapper():
-    folder_path = "./Pareto_Fronts/"
+    folder_path = "./data/"
     from os import listdir
     filenames = [folder_path + file for file in listdir(folder_path)]
     fronts = [HyperVolumeContainer(filename.split("/")[-1], file_reader(filename)) for filename in filenames]

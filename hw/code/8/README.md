@@ -1,6 +1,6 @@
 #**Code 8: Ranking of optimizers for DTLZ7 with 2 objectives and 10 decisions**
 
-#####**Swarupa Ramakrishnan (sramakr6) and Shruthi Gandhi (sgandhi3)**
+#####**Swarupa Ramakrishnan (sramakr6) and Shruti Gandhi (sgandhi3)**
 
 #####**Directions to run Code 8**
 

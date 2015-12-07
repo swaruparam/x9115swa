@@ -57,11 +57,11 @@ type3(final_era, zero_era)
 l = 0
 for each_opt in final_era:
     if l==0:
-        filename = './Pareto_Fronts/sa.txt'
+        filename = './data/sa.txt'
     if l==1:
-        filename = './Pareto_Fronts/mws.txt'
+        filename = './data/mws.txt'
     if l==2:
-        filename = './Pareto_Fronts/de.txt'
+        filename = './data/de.txt'
     f = open(filename, 'w')
     for each in each_opt:
         print >> f, each[0], each[1]
