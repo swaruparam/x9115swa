@@ -31,7 +31,7 @@ def type3(final_era, zero_era):
 for model in [dtlz7]:
     for _ in range(20):
         for optimizer in [simulatedAnnealing, maxWalkSat, differentialEvolution]:
-            print "\n" * 5
+            print "\n" * 2
             print "*****************************************"
             print "Model", model.__name__
             print "Optimizer", optimizer.__name__

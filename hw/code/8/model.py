@@ -69,7 +69,7 @@ class dtlz7():
         for each_list in energiesOfObjs:
             min_list.append(min(each_list))
             max_list.append(max(each_list))
-        print "min list", min_list
-        print "max list", max_list
+        print "Min values of Objectives", min_list
+        print "Max values of Objectives", max_list
         return [min_list, max_list]
         

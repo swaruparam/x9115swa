@@ -147,7 +147,6 @@ def simulatedAnnealing(obj):
         if k%50 == 0:
            #print int(k), " - ",
            #print "".join(out)
-           #print curr_era
            if prev_era == [ ]:
              first_era = curr_era[:]
            lives = lives + type2(s,prev_era,curr_era)
@@ -250,8 +249,6 @@ def maxWalkSat(obj):
           curr_era = [ ]
           out = [ ]
       
-    #loss = loss_in_eras(first_era, prev_era)
-    #print "Loss numbers: " , loss    
     print_can = [ ]
     for can in best_can.decs:
      print_can.append(round(can,3))    
@@ -269,15 +266,10 @@ def differentialEvolution(obj):
     prob_crossover = 0.3
     epsilon = 0.01
     
-    can1 = obj()
-    # min_f, max_f = can1.baseline_study()
-    
     best_can = obj()
 
     min_f = [sys.maxint,sys.maxint]
     max_f = [-sys.maxint-1,-sys.maxint-1]
-
-    best_can.copy(can1)
     
     frontier = [ ]
     curr_era = [ ]
@@ -346,8 +338,6 @@ def differentialEvolution(obj):
           curr_era = [ ]
           out = [ ]
     
-    #loss = loss_in_eras(first_era, prev_era)
-    #print "Loss numbers: " , loss     
     print_can = [ ]
     for can in best_can.decs:
      print_can.append(round(can,3))    

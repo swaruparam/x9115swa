@@ -1,5 +1,11 @@
 #**Code 8: Ranking of optimizers for DTLZ7 with 2 objectives and 10 decisions**
-**Swarupa Ramakrishnan (sramakr6) and Shruthi Gandhi (sgandhi3)**
+
+#####**Swarupa Ramakrishnan (sramakr6) and Shruthi Gandhi (sgandhi3)**
+
+#####**Directions to run Code 8**
+
+* Run python main.py to compute the optimizers results on the model for 20 iterations and produce the rankings returned by Scott-Knott
+* Run hypervolume_runner.py to get the values of hypervolumes of the results
 
 ###**Abstract**
 
@@ -58,9 +64,23 @@ Hyper volumes of the optimizers are calculated and their results are as shown be
 
 ![hypervolume](imgs/hypervolume.png)
 
-###**Threads to Validity**
+###**Threats to Validity**
+
+There are a number of threats to validity in this concerned project.
+
+* The results obtained are for minimal number of candidates and iterations in order to analyze the differences in performance metrics. These may vary and show more convergence if performed for prolonged iterations of larger populations. It is possible that the ranking of the optimizers shifts due to extended operations.
+
+* The optimizers are run on a specific model only, DTLZ7. This model has objectives which differ from those of other objectives. The performances of the optimizers cannot be concluded as best, better and worse based on these results alone. They may perform differently on other models, based on the objectives and decisions encountered.
+
+* Statistical Analysis of Scott-Knott is done based on the mean  of the euclidean distance of a candidate from its nearest neighbor of the baseline population. Thus the number of objectives get merged as a single value for easy comparison. Due to this, it is possible that the effective analysis gets disturbed. In our case, we consider DTLZ7 with 2 objectives, one being an incresing function and the other, decreasing. By combining both these objectives to a point form and performing operations, we do not get per-objective based accurate results.
 
 ###**Future Work**
+
+Based on the threats of validity and shortcomings of this project, this analysis can be extended to include more precise opertions and results in the future. Some of them are listed below.
+
+* These results have been obtained by running thr optimizers on the model for 20 iterations each. This can be extended to include more number of iterations to get more accurate and precise results. Additionally, the population size can be increased to have a larger spread of candidates.
+
+* To greatly understand the performance of each optimizer on the model, future work can be done on improving the type 1,2 and 3 comparisons. To account for speed and efficiency, currently only BDOM/CDOM is used for candidate comaprisons (Type 1) and mean loss distance is calcualted for early termination (Type 2). Better comaprison methods can be replaced, with an adjustment for speed, in order to analyze the genuine performances of the optimizers for a particular model.
 
 ###**References**
 <ol>
@@ -71,13 +91,3 @@ https://github.com/txt/mase/blob/master/src/doc/sk.py
 https://github.com/ai-se/Spread-HyperVolume
 </li>
 </ol>
-
-
-
-
-
-
-
-
-
-
