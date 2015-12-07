@@ -50,19 +50,19 @@ The hyper volumes of the different optimizers are obtained by saving the final f
 
 The following snapshots show the best candidates and their corresponding objectives for 3 runs (out of a total of 20 runs) of each optimizer on DTLZ7, with 2 objectives and 10 decisions.
 
-![res_1](imgs/res_1.png)
+![res_1](img/res_1.png)
 
-![res_2](imgs/res_2.png)
+![res_2](img/res_2.png)
 
-![res_3](imgs/res_3.png)
+![res_3](img/res_3.png)
 
 Upon successful completion of 20 iterations of each optimizer on the model, they are ranked on basis of the mean distance between the final era candidates and their nearest neighbor on the initial baseline population. The statistical machinery Scott-Knott technique is applied for ranking the optimizers. The median and interquartile ranges are provided for each optimizer, marking the difference between them.
 
-![rank](imgs/rank.png)
+![rank](img/rank.png)
 
 Hyper volumes of the optimizers are calculated and their results are as shown below.
 
-![hypervolume](imgs/hypervolume.png)
+![hypervolume](img/hypervolume.png)
 
 ###**Threats to Validity**
 
