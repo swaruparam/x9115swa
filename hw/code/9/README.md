@@ -1,6 +1,6 @@
 ##A Simple Standard Genetic Algorithm
 
-#### s9115hga - CSC 791 Respository
+#### x9115swa - CSC 791 Respository
 #####Contributers -
     sgandhi3@ncsu.edu
     sramakr6@ncsu.edu
