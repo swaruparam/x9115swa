@@ -72,7 +72,7 @@ Upon successful completion, the final populated frontier of optimized GA configu
 
 ![sorted_configs](img/sorted_configs.png)
 
-The resulted best configuration is fed as an input to the simple GA of code 9 and the resulting distance is recorded. The obtained divergence values vary by a margin, since the baseline populations for these candidates are not the same and the random seed isn't constant.
+The resulted best configuration is fed as an input to the simple GA of code 9 and the resulting distance is recorded. The obtained divergence values vary by a margin, since the baseline populations for these candidates are not the same and the random seed isn't constant. However, when compared with all the obtained configurations and the corresponding divergence values in Code 9, this value proves to be the highest. Thus, the additional DE optimizing on GA does provide better results in terms of the best GA configuration yielding the highest divergence value.
 
 ![comparison_with_9](img/comparison_with_9.png)
 
