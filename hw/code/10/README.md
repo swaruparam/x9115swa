@@ -72,7 +72,7 @@ Upon successful completion, the final populated frontier of optimized GA configu
 
 ![sorted_configs](img/sorted_configs.png)
 
-The resulted best configuration is fed as an input to the simple GA of code 9 and the resulting distance is recorded.
+The resulted best configuration is fed as an input to the simple GA of code 9 and the resulting distance is recorded. The obtained divergence values vary by a margin, since the baseline populations for these candidates are not the same and the random seed isn't constant.
 
 ![comparison_with_9](img/comparison_with_9.png)
 
@@ -80,7 +80,7 @@ The resulted best configuration is fed as an input to the simple GA of code 9 an
 
 There are a number of threats to validity in this concerned project.
 
-* While comparing the obtained best configuration with the simple GA program of code 9 to check for similar results, the initial baseline population is not the same. This leads to a distinct difference between the two values.
+* While comparing the obtained best configuration with the simple GA program of code 9 to check for similar results, the initial baseline population and the random seed are not the same. This leads to a difference between the two values.
 
 * The configurations of GA are compared on the basis of the mean of the distances from Hell, or the initial population. This is maximized in this program so that to achieve the most optimized configuration. However, since this model involves multi-objective functions, combining the objectives into a single point may reduce the level of accuracy. Comparisons based on this may not have yielded the best possible results.
 
